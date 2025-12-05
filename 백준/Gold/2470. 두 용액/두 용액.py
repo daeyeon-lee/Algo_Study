@@ -12,20 +12,16 @@ ans_left = 0
 ans_right = 0
 
 while left < right:
-    if abs(liq[left] + liq[right] - 0) <= min_v:
-        min_v = abs(liq[left] + liq[right] - 0)
+    sum_v = liq[left] + liq[right]
+    if abs(sum_v) < min_v:
+        min_v = abs(sum_v)
         ans_left = liq[left]
         ans_right = liq[right]
-        if abs(liq[left]) > abs(liq[right]):
-            left += 1
-        else:
-            right -= 1
 
-    elif abs(liq[left] + liq[right] - 0) > min_v:
-        if abs(liq[left]) > abs(liq[right]):
-            left += 1
-        else:
-            right -= 1
+    if sum_v < 0:
+        left += 1
+    else:
+        right -= 1
 
 ans = []
 ans.append(ans_left)
